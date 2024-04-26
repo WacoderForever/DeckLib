@@ -87,4 +87,8 @@ const char * GetCardSuitString(Card *self){
     return  NULL;
 }
 
+Card *copyCard(Card *self){
+    return newCard(self->value,self->suit);
+}
+
 const char * GetCardSuitString(Card *self);

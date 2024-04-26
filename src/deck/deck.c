@@ -30,13 +30,14 @@ void AddCardToDeck(Deck *self,Card *card){
 
 }
 
+void RemoveCardByIndex(Deck *self,int index){
 
 
-void  RemoveCardFromDeck(Deck *self,Card *card){
-
-
-    int index = SearchCardIndexInDeck(self,card);
-    if(index == -1){
+    //these allows -1 iterations
+    if(index < 0){
+        index  = self->size - index;
+    }
+    if(index >= self->size ){
         return;
     }
 
@@ -45,8 +46,21 @@ void  RemoveCardFromDeck(Deck *self,Card *card){
     for(int i=index ; i < self->size; i++){
         self->cards[i] = self->cards[i+1];
     }
-    //make a recursive call to keep removing
-    RemoveCardFromDeck(self,card);
+
+}
+
+void  RemoveCardFromDeck(Deck *self,Card *card){
+    //these its important because it avoids null refes
+    Card  *copy = copyCard(card);
+    while (true){
+        int index = SearchCardIndexInDeck(self,copy);
+        if(index == -1){
+            break;
+        }
+        RemoveCardByIndex(self,index);
+    }
+    FreeCard(copy);
+
 }
 
 void ShuffleDeck(Deck *self){
