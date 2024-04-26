@@ -1,16 +1,20 @@
 typedef struct Card{
 
-    char value;
-    char *suit;
+    int value;
+    int suit;
 
 }Card;
 
-void SetCardValue(Card *self,char value);
-void SetCardSuit(Card *self,char *suit);
+void SetCardValue(Card *self,int value);
 
-Card *newCard(char value,char *suit);
+void SetCardSuit(Card *self,int suit);
 
-char GetCardValue(Card *self);
-char *GetCardSuit(Card *self);
+Card *newCard(int value, int suit);
+
+const char * GetCardString(Card *self);
+
+int GetCardValue(Card *self);
+
+int GetCardSuit(Card *self);
 
 void FreeCard(Card *self);

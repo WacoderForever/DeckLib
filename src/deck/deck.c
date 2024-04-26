@@ -10,13 +10,11 @@ Deck *newDeck(){
 
 int SearchCardInDeck(Deck *self,Card *card){
 
-    int result=0;
+    int result=-1;
     for(int i=0;i<self->size;i++){
-
-        if((self->cards[i])==card){
-
-            result=1;
-            break;
+        Card  *current = self->cards[i];
+        if(current->value == card->value && current->suit == card->suit){
+            return i;
         }
     }
 
@@ -25,14 +23,15 @@ int SearchCardInDeck(Deck *self,Card *card){
 
 void AddCardToDeck(Deck *self,Card *card){
 
-    int exists=SearchCardInDeck(self,card);
+    self->cards=(Card**)realloc(
+            self->cards,
+            (self->size+1) * sizeof(Deck)
 
-    if(exists==0){
+            );
+    self->cards[self->size]=card;
 
-        self->cards=(Card**)realloc(self->cards,(self->size+1)*sizeof(Deck));
-        self->cards[self->size]=card;
-        self->size++;
-    }
+    self->size++;
+
 }
 
 void UpdateDeckAfterCardRemoval(Deck *self,int pos){
@@ -107,15 +106,14 @@ void DealCards(Deck *deck, Deck *mycards){
 }
 
 void FreeDeck(Deck *self){
-
-    if(self){
-
-        for(int i=0;i<self->size;i++){
-
-            Card *card=self->cards[i];
-            FreeCard(card);
-        }
+    if(!self){
+        return;
     }
 
+    for(int i=0;i<self->size;i++){
+        Card *card=self->cards[i];
+        FreeCard(card);
+    }
+    free(self->cards);
     free(self);
 }

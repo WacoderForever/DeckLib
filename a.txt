@@ -1,0 +1,43 @@
+if(self->suit == HEARTS){
+        if(self->value == ACES){
+            return "Ace of Hearts";
+        }
+        if(self->value == CARD2){
+            return "2 of Hearts";
+        }
+        if(self->value == CARD3){
+            return "3 of Hearts";
+        }
+        if(self->value == CARD4){
+            return "4 of Hearts";
+        }
+        if(self->value == CARD5){
+            return "5 of Hearts";
+        }
+        if(self->value == CARD6){
+            return "6 of Hearts";
+        }
+        if(self->value == CARD7){
+            return "7 of Hearts";
+        }
+        if(self->value == CARD8){
+            return "8 of Hearts";
+        }
+        if(self->value == CARD9){
+            return "9 of Hearts";
+        }
+        if(self->value == CARD10){
+            return "10 of Hearts";
+        }
+        if(self->value == JACKS){
+            return "Jack of Hearts";
+        }
+        if(self->value == QUEEN){
+            return "Queen of Hearts";
+        }
+        if(self->value == KING){
+            return "King of Hearts";
+        }
+
+
+    }

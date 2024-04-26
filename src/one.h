@@ -7,10 +7,13 @@
 #include <string.h>
 #include <time.h>
 
+#include "constants.h"
 #include "card/card.h"
 #include "deck/deck.h"
 
 #include "card/card.c"
+#include "card/card_string.c"
+
 #include "deck/deck.c"
 
 #endif 
