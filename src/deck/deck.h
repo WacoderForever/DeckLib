@@ -9,7 +9,7 @@ Deck *newDeck();
 
 void AddCardToDeck(Deck *self, Card *card);
 
-int FindCardIndex(Deck *self,Card *card);
+int SearchCardIndexInDeck(Deck *self, Card *card);
 
 void RemoveCardFromDeck(Deck *self,Card *card);
 

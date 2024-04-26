@@ -8,7 +8,7 @@ Deck *newDeck(){
 
 }
 
-int SearchCardInDeck(Deck *self,Card *card){
+int SearchCardIndexInDeck(Deck *self, Card *card){
 
     int result=-1;
     for(int i=0;i<self->size;i++){
@@ -23,58 +23,30 @@ int SearchCardInDeck(Deck *self,Card *card){
 
 void AddCardToDeck(Deck *self,Card *card){
 
-    self->cards=(Card**)realloc(
-            self->cards,
-            (self->size+1) * sizeof(Deck)
-
-            );
+    self->cards=(Card**)realloc(self->cards,(self->size+1) * sizeof(Deck));
     self->cards[self->size]=card;
 
     self->size++;
 
 }
 
-void UpdateDeckAfterCardRemoval(Deck *self,int pos){
-    
-    for(pos;pos<self->size;++pos){
 
-        self->cards[pos]=self->cards[pos+1];
+
+void  RemoveCardFromDeck(Deck *self,Card *card){
+
+
+    int index = SearchCardIndexInDeck(self,card);
+    if(index == -1){
+        return;
     }
 
+    FreeCard(self->cards[index]); // remove the found card
     self->size--;
-}
-
-int FindCardIndex(Deck *self,Card *card){
-
-    int result;
-
-    for(int i=0;i<self->size;i++){
-
-        if(self->cards[i]==card){
-
-            result=i;
-            return result;
-        }
+    for(int i=index ; i < self->size; i++){
+        self->cards[i] = self->cards[i+1];
     }
-}
-
-void RemoveCardFromDeck(Deck *self,Card *card){
-
-    int exists=SearchCardInDeck(self,card);
-    if(exists==0){
-
-        exit(1);
-    }
-
-    for(int i=0;i<self->size;i++){
-
-        if(card==self->cards[i]){
-
-            UpdateDeckAfterCardRemoval(self,i);
-            break;
-        }
-    }
-
+    //make a recursive call to keep removing
+    RemoveCardFromDeck(self,card);
 }
 
 void ShuffleDeck(Deck *self){
