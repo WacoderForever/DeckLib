@@ -74,33 +74,42 @@ void  RemoveCardFromDeck(Deck *self,Card *card){
     FreeCard(copy);
 
 }
+int privateDeck_lib_get_random_card_index(Deck *self){
+    unsigned  long current_seed = time(NULL) + DECK_LIB_SEED + TOTAL_ITERATIONS;
+    TOTAL_ITERATIONS+=1;
+    srand(current_seed);
+    return rand() %( self->size-1);
 
+}
 void ShuffleDeck(Deck *self){
 
-    int rand1=30+rand()%13;
+    for(int i = 0; i < DECK_LIB_TOTAL_SHUFFLE; i++){
+        int card_index = privateDeck_lib_get_random_card_index(self);
+        int index_to_swap = privateDeck_lib_get_random_card_index(self);
 
-    for(int i=0;i<rand1;i++){
-
-        int rand2=rand()%(self->size);
-        Card *temp=self->cards[rand2];
-        self->cards[rand2]=self->cards[rand1%(self->size)];
-        self->cards[rand1%(self->size)]=temp;
+        if(card_index == index_to_swap){
+            continue;
+        }
+        Card  *temp =  self->cards[card_index];
+        self->cards[card_index] = self->cards[index_to_swap];
+        self->cards[index_to_swap] = temp;
     }
-
 
 }
 
-void DealCards(Deck *deck, Deck *mycards){
+Deck * DealCards(Deck *self,int size){
 
-    ShuffleDeck(deck);
-    
-    for(int i=0;i<4;i++){
-        
-        Card *card=deck->cards[i]; //pick top card
-        AddCardToDeck(mycards,card); //give selected card to player
-        RemoveCardFromDeck(deck,card);  //remove card from the main deck
-        ShuffleDeck(deck);
+    ShuffleDeck(self);
+    Deck  *sub_deck  = newDeck();
+
+    for(int i=0;i<size;i++){
+        Card *card=self->cards[i]; //pick top card
+        Card  *copy = copyCard(card);
+        AddCardToDeck(sub_deck,copy);
+        RemoveCardByIndex(self,i);
+
     }
+    return sub_deck;
 }
 
 void FreeDeck(Deck *self){

@@ -17,8 +17,10 @@ void RemoveCardByIndex(Deck *self,int index);
 
 void RemoveCardFromDeck(Deck *self,Card *card);
 
+int privateDeck_lib_get_random_card_index(Deck *self);
+
 void ShuffleDeck(Deck *self);
 
-void DealCards(Deck *self, Deck *mycards);
+Deck * DealCards(Deck *self,int size);
 
 void FreeDeck(Deck *self);

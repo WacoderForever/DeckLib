@@ -1,3 +1,6 @@
+#define DECK_LIB_SEED 23423492323;
+unsigned int TOTAL_ITERATIONS = 0;
+#define DECK_LIB_TOTAL_SHUFFLE 10000
 
 enum  {
     SPADES,
@@ -5,7 +8,6 @@ enum  {
     CLUBS,
     HEARTS
 };
-
 
  enum {
      ACES,
