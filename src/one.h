@@ -12,7 +12,7 @@
 #include "deck/deck.h"
 
 #include "card/card.c"
-#include "card/card_string.c"
+#include "card/full_card_string.c"
 
 #include "deck/deck.c"
 

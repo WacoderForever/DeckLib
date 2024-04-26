@@ -13,6 +13,11 @@ Card *newCard(int value, int suit);
 
 const char * GetCardString(Card *self);
 
+const char * GetCardValueString(Card *self);
+
+const char * GetCardSuitString(Card *self);
+
+
 int GetCardValue(Card *self);
 
 int GetCardSuit(Card *self);
