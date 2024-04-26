@@ -20,6 +20,18 @@ int SearchCardIndexInDeck(Deck *self, Card *card){
 
     return result;
 }
+Card  *GetCardByIndex(Deck *self,int index){
+    //these allows -1 iterations
+    if(index < 0){
+        index  = self->size - index;
+    }
+
+    if(index >= self->size ){
+        return NULL;
+    }
+
+    return  self->cards[index];
+}
 
 void AddCardToDeck(Deck *self,Card *card){
 

@@ -11,6 +11,8 @@ void AddCardToDeck(Deck *self, Card *card);
 
 int SearchCardIndexInDeck(Deck *self, Card *card);
 
+Card  *GetCardByIndex(Deck *self,int index);
+
 void RemoveCardByIndex(Deck *self,int index);
 
 void RemoveCardFromDeck(Deck *self,Card *card);
