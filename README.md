@@ -55,6 +55,30 @@ int main(){
     return 0;
 }
 ~~~
+### Loading all 52 cards to a deck
+
+~~~c
+
+#include "decklib,h"
+
+int main(){
+
+    Deck *fulldeck=newDeck();
+    LoadFullDeck(fulldeck);
+
+    printf("Printing a full deck of cards\n");
+    printf("===============================\n");
+
+    for(int i=o;i<fulldeck->size;i++){
+
+        Card *temp=fulldeck->cards[i];
+        printf("%s\n",GetCardString(temp));
+    }
+
+    FreeDeck(fulldeck);
+    return 0;
+}
+~~~
 
 ### Dealing cards
 
