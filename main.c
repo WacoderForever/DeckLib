@@ -39,6 +39,17 @@ int main(){
         Card *temp= GetCardByIndex(maindeck,i);
         printf("%s\n", GetCardString(temp));
     }
+
+    Deck *fulldeck=newDeck();
+    LoadFullDeck(fulldeck);
+    printf("Printing full deck:============================================\n");
+    for(int i=0;i<fulldeck->size;i++){
+
+        Card *temp= GetCardByIndex(fulldeck,i);
+        printf("%s\n", GetCardString(temp));
+    }
+    
+    FreeDeck(fulldeck);
     FreeDeck(maindeck);
     FreeDeck(sub_deck);
 

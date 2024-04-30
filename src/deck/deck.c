@@ -42,6 +42,18 @@ void AddCardToDeck(Deck *self,Card *card){
 
 }
 
+void LoadFullDeck(Deck *self){
+
+    for(int i=0;i<4;i++){
+
+        for(int j=0;j<13;j++){
+
+            Card *temp=newCard(j,i);
+            AddCardToDeck(self,temp);
+        }
+    }
+}
+
 void RemoveCardByIndex(Deck *self,int index){
 
 

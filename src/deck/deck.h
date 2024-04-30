@@ -9,6 +9,8 @@ Deck *newDeck();
 
 void AddCardToDeck(Deck *self, Card *card);
 
+void LoadFullDeck(Deck *self);
+
 int SearchCardIndexInDeck(Deck *self, Card *card);
 
 Card  *GetCardByIndex(Deck *self,int index);

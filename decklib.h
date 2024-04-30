@@ -12,14 +12,14 @@
 unsigned int TOTAL_ITERATIONS = 0;
 #define DECK_LIB_TOTAL_SHUFFLE 10000
 
-enum  {
+enum {
     SPADES,
     DIAMONDS,
     CLUBS,
     HEARTS
 };
 
- enum {
+enum{
      ACES,
      CARD2,
      CARD3,
@@ -74,6 +74,8 @@ typedef struct Deck{
 Deck *newDeck();
 
 void AddCardToDeck(Deck *self, Card *card);
+
+void LoadFullDeck(Deck *self);
 
 int SearchCardIndexInDeck(Deck *self, Card *card);
 
@@ -413,6 +415,18 @@ void AddCardToDeck(Deck *self,Card *card){
 
     self->size++;
 
+}
+
+void LoadFullDeck(Deck *self){
+
+    for(int i=0;i<4;i++){
+
+        for(int j=0;j<13;j++){
+
+            Card *temp=newCard(j,i);
+            AddCardToDeck(self,temp);
+        }
+    }
 }
 
 void RemoveCardByIndex(Deck *self,int index){

@@ -2,14 +2,14 @@
 unsigned int TOTAL_ITERATIONS = 0;
 #define DECK_LIB_TOTAL_SHUFFLE 10000
 
-enum  {
+enum {
     SPADES,
     DIAMONDS,
     CLUBS,
     HEARTS
 };
 
- enum {
+enum{
      ACES,
      CARD2,
      CARD3,
