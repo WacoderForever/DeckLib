@@ -15,5 +15,6 @@
 #include "card/full_card_string.c"
 
 #include "deck/deck.c"
+#include "deck/deck2.c"
 
 #endif 
