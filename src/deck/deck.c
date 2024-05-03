@@ -64,7 +64,6 @@ void TransferCards(Deck *src,Deck *dest,int number){
    // ShuffleDeck(src);
     for(int i=0;i<number;i++){
         Card *card=src->cards[0]; //pick top card
-        printf("card: %s\n", GetCardString(card));
         Card  *copy = copyCard(card);
         AddCardToDeck(dest,copy);
         RemoveCardByIndex(src,0);
