@@ -29,10 +29,11 @@ int main(){
 
     printf("Printing sub deck:============================\n");
     Deck  *sub_deck = newDeck();
-    TransferCards(maindeck,sub_deck,2);
+    TransferCards(maindeck,sub_deck,5);
+
     for(int i = 0; i < sub_deck->size;i++){
         Card *temp= GetCardByIndex(sub_deck,i);
-        printf("%s\n", GetCardString(temp));
+        //printf("%s\n", GetCardString(temp));
     }
     printf("Printing main deck after deal:============================\n");
     for(int i=0;i<maindeck->size;i++){
@@ -41,16 +42,7 @@ int main(){
         printf("%s\n", GetCardString(temp));
     }
 
-    Deck *fulldeck=newDeck();
-    LoadFullDeck(fulldeck);
-    printf("Printing full deck:============================================\n");
-    for(int i=0;i<fulldeck->size;i++){
-
-        Card *temp= GetCardByIndex(fulldeck,i);
-        printf("%s\n", GetCardString(temp));
-    }
     
-    FreeDeck(fulldeck);
     FreeDeck(maindeck);
     FreeDeck(sub_deck);
 
