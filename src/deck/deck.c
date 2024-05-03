@@ -127,6 +127,10 @@ void ShuffleDeck(Deck *self){
 }
 
 Deck * DealCards(Deck *self,int size){
+    if(self->size < size){
+        printf("Source deck has less cards\n");
+        return NULL;
+   }
 
     ShuffleDeck(self);
     Deck  *sub_deck  = newDeck();
