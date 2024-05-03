@@ -19,6 +19,8 @@ void TransferCards(Deck *src,Deck *dest,int number);
 
 void RemoveCardByIndex(Deck *self,int index);
 
+void RemoveCardReferenceByIndex(Deck *self,int index);
+
 void RemoveCardFromDeck(Deck *self,Card *card);
 
 int privateDeck_lib_get_random_card_index(Deck *self);

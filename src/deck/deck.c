@@ -64,9 +64,8 @@ void TransferCards(Deck *src,Deck *dest,int number){
    // ShuffleDeck(src);
     for(int i=0;i<number;i++){
         Card *card=src->cards[0]; //pick top card
-        Card  *copy = copyCard(card);
-        AddCardToDeck(dest,copy);
-        RemoveCardByIndex(src,0);
+        AddCardToDeck(dest,card);
+        RemoveCardReferenceByIndex(src,0);
     }
 
 }
@@ -83,6 +82,22 @@ void RemoveCardByIndex(Deck *self,int index){
     }
 
     FreeCard(self->cards[index]); // remove the found card
+    self->size--;
+    for(int i=index ; i < self->size; i++){
+        self->cards[i] = self->cards[i+1];
+    }
+
+}
+void RemoveCardReferenceByIndex(Deck *self,int index){
+
+    //these allows -1 iterations
+    if(index < 0){
+        index  = self->size - index;
+    }
+    if(index >= self->size ){
+        return;
+    }
+
     self->size--;
     for(int i=index ; i < self->size; i++){
         self->cards[i] = self->cards[i+1];
@@ -137,9 +152,8 @@ Deck * DealCards(Deck *self,int size){
 
     for(int i=0;i<size;i++){
         Card *card=self->cards[0]; //pick top card
-        Card  *copy = copyCard(card);
-        AddCardToDeck(sub_deck,copy);
-        RemoveCardByIndex(self,0);
+        AddCardToDeck(sub_deck,card);
+        RemoveCardReferenceByIndex(self,0);
 
     }
     return sub_deck;
