@@ -28,7 +28,8 @@ int main(){
     }
 
     printf("Printing sub deck:============================\n");
-    Deck  *sub_deck = DealCards(maindeck,2);
+    Deck  *sub_deck = newDeck();
+    TransferCards(maindeck,sub_deck,2);
     for(int i = 0; i < sub_deck->size;i++){
         Card *temp= GetCardByIndex(sub_deck,i);
         printf("%s\n", GetCardString(temp));

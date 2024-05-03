@@ -124,6 +124,52 @@ int main(){
 }
 ~~~
 
+### Transferring cards from one deck to another
+
+~~~c
+#include "decklib.h"
+
+int main(){
+
+     //creating new cards
+    Card *card1=newCard(CARD3,HEARTS);
+    Card *card2=newCard(CARD4,DIAMONDS);
+    Card *card3=newCard(CARD4,CLUBS);
+    Card *card4=newCard(ACE,SPADE);
+
+    //creating new deck
+    Deck *deck1=newDeck();
+
+    AddCardToDeck(deck1,card1);
+    AddCardToDeck(deck1,card2);
+    AddCardToDeck(deck1,card3);
+    AddCardToDeck(deck1,card4);
+
+    Deck *deck2=newDeck();
+    TransferCards(deck1,deck2,2);//transferring 2 cards from deck1 to deck2
+
+    printf("Printing cards transfered to deck2===================\n");
+    for(int i=0;i<deck2->size;i++){
+
+        Card *temp=GetCardByIndex(deck2,i);
+        printf("%s\n",GetCardString(temp));
+
+    }
+    printf("Printing cards remaining on the deck:============\n");
+    for(int i=0;i<deck1->size;i++){
+
+        Card *temp= GetCardByIndex(deck1,i);
+        printf("%s\n", GetCardString(temp));
+    }
+
+    FreeDeck(deck2);
+    FreeDeck(deck1);
+    return 0;
+}
+~~~
+
+
+
 
 
 

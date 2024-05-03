@@ -54,6 +54,26 @@ void LoadFullDeck(Deck *self){
     }
 }
 
+void TransferCards(Deck *src,Deck *dest,int number){
+
+    ShuffleDeck(src);
+    if(src->size>=number){
+
+        for(int i=0;i<number;i++){
+
+            Card *card=src->cards[i]; //pick top card
+            Card  *copy = copyCard(card);
+            AddCardToDeck(dest,copy);
+            RemoveCardByIndex(src,i);
+        }
+    }
+
+    else{
+
+        printf("Source deck has less cards\n");
+    }
+}
+
 void RemoveCardByIndex(Deck *self,int index){
 
 

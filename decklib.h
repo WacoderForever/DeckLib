@@ -81,6 +81,8 @@ int SearchCardIndexInDeck(Deck *self, Card *card);
 
 Card  *GetCardByIndex(Deck *self,int index);
 
+void TransferCards(Deck *src,Deck *dest,int number);
+
 void RemoveCardByIndex(Deck *self,int index);
 
 void RemoveCardFromDeck(Deck *self,Card *card);
@@ -426,6 +428,26 @@ void LoadFullDeck(Deck *self){
             Card *temp=newCard(j,i);
             AddCardToDeck(self,temp);
         }
+    }
+}
+
+void TransferCards(Deck *src,Deck *dest,int number){
+
+    ShuffleDeck(src);
+    if(src->size>=number){
+
+        for(int i=0;i<number;i++){
+
+            Card *card=src->cards[i]; //pick top card
+            Card  *copy = copyCard(card);
+            AddCardToDeck(dest,copy);
+            RemoveCardByIndex(src,i);
+        }
+    }
+
+    else{
+
+        printf("Source deck has less cards\n");
     }
 }
 
