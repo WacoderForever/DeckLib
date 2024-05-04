@@ -3,6 +3,9 @@
         "conversion.h": "c",
         "*.tcc": "c",
         "string": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "array": "c",
+        "initializer_list": "c",
+        "utility": "c"
     }
 }
