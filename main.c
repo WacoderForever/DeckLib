@@ -1,9 +1,7 @@
 
-#include "decklib.h"
+#include "src/one.h"
 
 int main(){
-
-
 
     Deck *maindeck=newDeck();
     LoadFullDeck(maindeck);
@@ -14,7 +12,6 @@ int main(){
     }
 
     FreeDeck(maindeck);
-
 
     return 0;
 }

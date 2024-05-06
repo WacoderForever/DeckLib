@@ -12,7 +12,14 @@ void  RemoveCardFromDeck(Deck *self,Card *card){
 
 }
 int privateDeck_lib_get_random_card_index(Deck *self){
-    unsigned  long current_seed = time(NULL) + DECK_LIB_SEED + TOTAL_ITERATIONS;
+    unsigned  long current_seed = DECKLIB_DEBUG_SEED +TOTAL_ITERATIONS;
+    if(!DECKLIB_DEBUG_SEED){
+        current_seed = time(NULL) + DECK_LIB_SEED + TOTAL_ITERATIONS;
+    }
+    if(!DECK_LIB_STARTED_SEED){
+        DECK_LIB_STARTED_SEED = current_seed;
+    }
+
     TOTAL_ITERATIONS+=1;
     srand(current_seed);
     return rand() %( self->size-1);

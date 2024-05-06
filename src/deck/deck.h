@@ -1,3 +1,7 @@
+
+unsigned long TOTAL_ITERATIONS = 0;
+unsigned long DECKLIB_DEBUG_SEED = 0;
+unsigned  long DECK_LIB_STARTED_SEED = 0;
 typedef struct Deck{
 
     Card **cards;
